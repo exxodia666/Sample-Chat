@@ -7,7 +7,6 @@ const initialState = {
     } 
 }
 const auth_reducer = (state: any = initialState, action: any) => {
-
     switch (action.type) {
         case SEND_REQ_SUCCESS: 
             return {

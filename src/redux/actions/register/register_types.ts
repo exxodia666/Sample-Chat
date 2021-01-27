@@ -1,6 +1,10 @@
 export const SEND_USER_DATA           = 'USER/SEND_USER_DATA'
 export const SEND_USER_ERROR          = 'USER/SEND_USER_ERROR'
 export const SEND_USER_SUCCESS        = 'USER/SEND_USER_SUCCESS'
+export const SEND_USER_DATA_PENDING   = 'USER/SEND_USER_DATA_PENDING'
+
+
+export const SEND_USER_CANCEL        = 'USER/SEND_USER_CANCEL'
 
 export const CHECK_PASSWORDS          = 'USER/CHECK_PASSWORDS'
 export const CHECK_PASSWORDS_SUCCESS  = 'USER/CHECK_PASSWORDS_SUCCESS'
@@ -11,8 +15,6 @@ export type user_input_type = {
     passwords: string[]
 
 }
-
-
 export type user_type = {
     username: string,
     password: string
@@ -30,6 +32,13 @@ interface SendDataActionError {
     type: typeof SEND_USER_ERROR
     payload: any//todo types for this
 }
+
+interface SendDataActionPending {
+    type: typeof SEND_USER_DATA_PENDING
+}
+interface SendDataActionCancel {
+    type: typeof SEND_USER_CANCEL
+}
 interface CheckPasswordsAction {
     type: typeof CHECK_PASSWORDS
     payload: user_input_type
@@ -44,7 +53,9 @@ interface CheckPasswordsActionError {
 }
 export type RegisterActionTypes = SendDataAction | 
                                   SendDataActionError | 
-                                  SendDataActionSuccess
+                                  SendDataActionSuccess |
+                                  SendDataActionCancel | 
+                                  SendDataActionPending
 export type CheckPasswordsActionTypes = CheckPasswordsAction | 
                                         CheckPasswordsActionError | 
                                         CheckPasswordsActionSuccess
