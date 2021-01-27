@@ -2,22 +2,42 @@ import React, { Dispatch } from 'react'
 import { View, Text, StyleSheet, TextInput, Dimensions, Button, Image} from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import {makeReq} from '../redux/actions/auth/auth_actions'
+import { CheckPasswords } from '../redux/actions/register/register_actions'
 import { StoreType } from '../redux/Store'
 import Card from './template/Card'
 import TextComponent from './template/TextComponent'
 
 const Component: React.FC = (): JSX.Element => {
-    const [input, setInput] = React.useState('')
+    const [name, setname] = React.useState('')
+    const [password, setpassword] = React.useState('')
+    const [confirmation, setconfirmation] = React.useState('')
+    
+    
     const dispatch = useDispatch()
     const state = useSelector((state: StoreType) => state.auth)
-    const hadleOnPress = () => input.length ? dispatch(makeReq(input)) : null;
+
+    const hadleOnPress = () => name.length && password.length && confirmation.length ? dispatch(CheckPasswords({
+        user_name: name,
+        passwords: [password, confirmation]
+    })) : null;
+
     return (
         <View style = {styles.container}>
             <Card>
                 <TextInput 
                     style = {styles.textInput}
                     placeholder = {'Введите имя'}
-                    onChangeText = {setInput}
+                    onChangeText = {setname}
+                />
+                <TextInput 
+                    style = {styles.textInput}
+                    placeholder = {'Введите пароль'}
+                    onChangeText = {setpassword}
+                />
+                <TextInput 
+                    style = {styles.textInput}
+                    placeholder = {'Подтверждение пароля'}
+                    onChangeText = {setconfirmation}
                 />
                 <Button 
                     onPress = {hadleOnPress}

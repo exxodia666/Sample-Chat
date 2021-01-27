@@ -1,0 +1,1 @@
+export const check_passwords = (passwords: string[]): boolean => passwords[0] === passwords[1]
