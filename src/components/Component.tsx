@@ -22,7 +22,10 @@ const Component: React.FC = (): JSX.Element => {
     //     user_name: name,
     //     passwords: [password, confirmation]
     // })) : null;
-
+    // const hadleOnPress = () => dispatch(CheckPasswords({
+    //         user_name: name,
+    //         passwords: [password, confirmation]
+    //     }));
 
     const hadleOnPress = () => {
         if(name.length && password.length && confirmation.length) {
@@ -40,20 +43,16 @@ const Component: React.FC = (): JSX.Element => {
             setInput(true)  
         }
     };
-
-    console.log(state)
-
     if(state.status === 'pending') {
         return <View style = {{flex: 1, justifyContent: 'center', alignItems: "center"}}>
-               <Button title = 'Cancel' color = 'red' onPress = {()=> dispatch(SendDataCancel())} />
-               <ActivityIndicator color = {'red'}/>
+                    <Button title = 'Cancel' color = 'red' onPress = {()=> dispatch(SendDataCancel())} />
+                    <ActivityIndicator color = {'red'}/>
                 </View> 
        
     } 
     if(state.status === 'success') {
         return <Text>Loaded</Text>
     }
-    
     if(state.status === 'idle') {
         return (
             <View style = {styles.container}>

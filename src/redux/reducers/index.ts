@@ -6,4 +6,5 @@ const reducers = {
     auth: auth_reducer,
     register: register_reducer
 }
+
 export default combineReducers(reducers)

@@ -1,8 +1,11 @@
+import { Registration } from "../../epics/register_epic/register_types"
+
 export const SEND_USER_DATA           = 'USER/SEND_USER_DATA'
 export const SEND_USER_ERROR          = 'USER/SEND_USER_ERROR'
 export const SEND_USER_SUCCESS        = 'USER/SEND_USER_SUCCESS'
-export const SEND_USER_DATA_PENDING   = 'USER/SEND_USER_DATA_PENDING'
+export const SEND_USER_ERROR_USER_IS  = 'USER/SEND_USER_ERROR_USER_IS'
 
+export const SEND_USER_DATA_PENDING   = 'USER/SEND_USER_DATA_PENDING'
 
 export const SEND_USER_CANCEL        = 'USER/SEND_USER_CANCEL'
 
@@ -13,24 +16,23 @@ export const CHECK_PASSWORDS_ERROR    = 'USER/CHECK_PASSWORDS_ERROR'
 export type user_input_type = {
     user_name: string,
     passwords: string[]
-
 }
 export type user_type = {
     username: string,
     password: string
 }
-
+//todo error type
+export type error_type = {
+    username: string,
+    password: string
+}
 interface SendDataAction {
   type: typeof SEND_USER_DATA
-  payload: user_type //todo types for this
+  payload: user_type
 }
 interface SendDataActionSuccess {
     type: typeof SEND_USER_SUCCESS
-    payload: any//todo type for this
-}
-interface SendDataActionError {
-    type: typeof SEND_USER_ERROR
-    payload: any//todo types for this
+    payload: string
 }
 
 interface SendDataActionPending {
@@ -39,25 +41,34 @@ interface SendDataActionPending {
 interface SendDataActionCancel {
     type: typeof SEND_USER_CANCEL
 }
-interface CheckPasswordsAction {
-    type: typeof CHECK_PASSWORDS
-    payload: user_input_type
+interface SendDataActionError {
+    type: typeof SEND_USER_ERROR
+    payload: string
 }
-interface CheckPasswordsActionSuccess {
-      type: typeof CHECK_PASSWORDS_SUCCESS
-      payload: user_type
-} 
-interface CheckPasswordsActionError {
-      type: typeof CHECK_PASSWORDS_ERROR
-      payload: any
+interface SendDataActionErrorUserIs {
+    type: typeof SEND_USER_ERROR_USER_IS
+    payload: string
 }
-export type RegisterActionTypes = SendDataAction | 
-                                  SendDataActionError | 
+// interface CheckPasswordsAction {
+//     type: typeof CHECK_PASSWORDS
+//     payload: user_input_type
+// }
+// interface CheckPasswordsActionSuccess {
+//       type: typeof CHECK_PASSWORDS_SUCCESS
+//       payload: user_type
+// } 
+// interface CheckPasswordsActionError {
+//       type: typeof CHECK_PASSWORDS_ERROR
+//       payload: any
+// }
+export type RegisterActionTypes = SendDataAction        | 
+                                  SendDataActionError   | 
                                   SendDataActionSuccess |
-                                  SendDataActionCancel | 
-                                  SendDataActionPending
-export type CheckPasswordsActionTypes = CheckPasswordsAction | 
-                                        CheckPasswordsActionError | 
-                                        CheckPasswordsActionSuccess
+                                  SendDataActionCancel  | 
+                                  SendDataActionPending | 
+                                  SendDataActionErrorUserIs
+// export type CheckPasswordsActionTypes = CheckPasswordsAction | 
+//                                         CheckPasswordsActionError | 
+//                                         CheckPasswordsActionSuccess
 
 
