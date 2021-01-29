@@ -9,66 +9,36 @@ export const SEND_USER_DATA_PENDING   = 'USER/SEND_USER_DATA_PENDING'
 
 export const SEND_USER_CANCEL        = 'USER/SEND_USER_CANCEL'
 
-export const CHECK_PASSWORDS          = 'USER/CHECK_PASSWORDS'
-export const CHECK_PASSWORDS_SUCCESS  = 'USER/CHECK_PASSWORDS_SUCCESS'
-export const CHECK_PASSWORDS_ERROR    = 'USER/CHECK_PASSWORDS_ERROR'
-
 export type user_input_type = {
     user_name: string,
-    passwords: string[]
+    password: string,
+    confirmation: string
 }
 export type user_type = {
     username: string,
     password: string
+    confirmation: string
 }
-//todo error type
-export type error_type = {
-    username: string,
-    password: string
-}
-interface SendDataAction {
+export interface SendDataAction {
   type: typeof SEND_USER_DATA
   payload: user_type
 }
-interface SendDataActionSuccess {
+export interface SendDataActionSuccess {
     type: typeof SEND_USER_SUCCESS
-    payload: string
 }
 
-interface SendDataActionPending {
+export interface SendDataActionPending {
     type: typeof SEND_USER_DATA_PENDING
 }
-interface SendDataActionCancel {
+export interface SendDataActionCancel {
     type: typeof SEND_USER_CANCEL
 }
-interface SendDataActionError {
+export interface SendDataActionError {
     type: typeof SEND_USER_ERROR
     payload: string
 }
-interface SendDataActionErrorUserIs {
+export interface SendDataActionErrorUserIs {
     type: typeof SEND_USER_ERROR_USER_IS
     payload: string
 }
-// interface CheckPasswordsAction {
-//     type: typeof CHECK_PASSWORDS
-//     payload: user_input_type
-// }
-// interface CheckPasswordsActionSuccess {
-//       type: typeof CHECK_PASSWORDS_SUCCESS
-//       payload: user_type
-// } 
-// interface CheckPasswordsActionError {
-//       type: typeof CHECK_PASSWORDS_ERROR
-//       payload: any
-// }
-export type RegisterActionTypes = SendDataAction        | 
-                                  SendDataActionError   | 
-                                  SendDataActionSuccess |
-                                  SendDataActionCancel  | 
-                                  SendDataActionPending | 
-                                  SendDataActionErrorUserIs
-// export type CheckPasswordsActionTypes = CheckPasswordsAction | 
-//                                         CheckPasswordsActionError | 
-//                                         CheckPasswordsActionSuccess
-
 

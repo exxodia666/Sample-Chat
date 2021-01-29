@@ -8,7 +8,13 @@ const initialState = {
 }
 const auth_reducer = (state: any = initialState, action: any) => {
     switch (action.type) {
-        case SEND_REQ_SUCCESS: 
+
+        ///todo res type "data" : {
+            //"access_token": "Spike", 
+            //"token_type": "bearer" 
+        //}
+        case SEND_REQ_SUCCESS:
+            console.log(action.payload) 
             return {
                 status: 'completed',
                 data: {...action.payload}

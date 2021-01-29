@@ -8,7 +8,6 @@ export namespace Registration {
         username: string
         password: string
     }
-
     type ErrorUserIsset = {
         detail : string //
         message: string
@@ -18,7 +17,6 @@ export namespace Registration {
         message : string //
         detail: string
     }
-
     export type Errors = ErrorUser | ErrorUserIsset
 }
 

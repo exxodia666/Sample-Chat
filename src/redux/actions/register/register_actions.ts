@@ -1,57 +1,38 @@
 import {
-        RegisterActionTypes, 
+        SendDataAction, 
         SEND_USER_DATA, 
         user_type, 
         SEND_USER_ERROR, 
         SEND_USER_CANCEL, 
         SEND_USER_DATA_PENDING, 
         SEND_USER_SUCCESS,
-        SEND_USER_ERROR_USER_IS
+        SEND_USER_ERROR_USER_IS,
+        SendDataActionPending,
+        SendDataActionCancel,
+        SendDataActionSuccess,
+        SendDataActionError,
+        SendDataActionErrorUserIs
 } from "./register_types";
 
-export const SendData = (user: user_type): RegisterActionTypes => ({
+export const SendData = (user: user_type): SendDataAction => ({
     type: SEND_USER_DATA,
     payload: user //todo types for this
 })
-export const SendDataPending = (): RegisterActionTypes => ({
+export const SendDataPending = (): SendDataActionPending => ({
     type: SEND_USER_DATA_PENDING,
 })
-export const SendDataCancel = (): RegisterActionTypes => ({
+export const SendDataCancel = (): SendDataActionCancel => ({
     type: SEND_USER_CANCEL,
 })
-export const SendDataSuccess = (data: any): RegisterActionTypes=> ({
+export const SendDataSuccess = (): SendDataActionSuccess => ({
     type: SEND_USER_SUCCESS,
-    payload: data //todo types for this
 })
 //todo errors type
-export const SendDataError = (message: string): RegisterActionTypes => ({
+export const SendDataError = (message: string): SendDataActionError => ({
         type: SEND_USER_ERROR,
         payload: message //todo types for this
 })
-export const SendDataErrorUserIs = (message: string): RegisterActionTypes => ({
+export const SendDataErrorUserIs = (message: string): SendDataActionErrorUserIs => ({
     type: SEND_USER_ERROR_USER_IS,
     payload: message //todo types for this
 })
-
-// export const CheckPasswords = (data: user_input_type): CheckPasswordsActionTypes => {
-//     console.log(data)
-//     return {
-//     type: CHECK_PASSWORDS,
-//     payload: data //todo types for this
-// }}
-
-// export const CheckPasswordsSuccess = (payload: user_type): CheckPasswordsActionTypes => {
-//     console.log('SUCCES')
-//     return {
-//     type: CHECK_PASSWORDS_SUCCESS,
-//     payload
-// }}
-
-// ///todo
-// export const CheckPasswordsError = (error: string): CheckPasswordsActionTypes => {
-//     console.log('ERROR')
-//     return {
-//         type: CHECK_PASSWORDS_ERROR,
-//         payload: error
-//     }
-// }
