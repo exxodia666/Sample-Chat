@@ -2,6 +2,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import React from 'react'
 import Component from '../../components/Component';
 import Component2 from '../../components/Component2';
+import MainStack from '../MainStack/MainStack';
 
 const MainDrawer = () => {
     const Drawer = createDrawerNavigator();
@@ -9,7 +10,7 @@ const MainDrawer = () => {
         <Drawer.Navigator initialRouteName="Home">
             <Drawer.Screen
                 name="Home"
-                component={Component}
+                component={MainStack}
             />
             <Drawer.Screen
                 name="Notifications"

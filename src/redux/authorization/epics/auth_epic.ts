@@ -50,11 +50,12 @@ const auth_user_fake = (data: user_type) => {
     });
 }
 
+
 const fetchUserEpic = (action$: any, state$: any) => {
     return action$.pipe(
-        ofType(SEND_USER_SUCCESS || AUTH_START),
+        ofType(AUTH_START, SEND_USER_SUCCESS),
         mergeMap((action: AuthAction) =>
-            from(auth_user_fake({ username: action.payload.username, password: action.payload.password })).pipe(
+            from(auth_user({ username: action.payload.username, password: action.payload.password })).pipe(
                 //console.log(response)
                 map((response: unknown) => AuthUserSuccess({ ...response.data, username: action.payload.username })),
                 catchError(error => {

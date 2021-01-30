@@ -9,7 +9,9 @@ import {
     AuthSuccessAction,
     AuthErrorAction,
     AuthCancelAction,
-    AUTH_START
+    AUTH_START,
+    LOGOUT,
+    LogoutAction,
 } from './auth_action_types';
 
 export const AuthUser = (user: user_type): AuthAction => {
@@ -18,6 +20,7 @@ export const AuthUser = (user: user_type): AuthAction => {
         payload: user
     }
 }
+
 export const AuthUserSuccess = (payload: Authorization.responseType): AuthSuccessAction => {
     return {
         type: AUTH_SUCCESS,
@@ -36,6 +39,11 @@ export const AuthUserCancel = (): AuthCancelAction => {
     }
 };
 
+export const Logout = (): LogoutAction => {
+    return {
+        type: LOGOUT,
+    }
+};
 
 
 

@@ -9,5 +9,4 @@ const Store = createStore(rootReducer, applyMiddleware(epicMiddleware))
 
 epicMiddleware.run(rootEpic)
 
-export type StoreType = ReturnType<typeof rootReducer>;
 export default Store;

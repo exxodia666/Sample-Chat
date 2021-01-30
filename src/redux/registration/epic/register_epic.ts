@@ -47,7 +47,7 @@ const registrationEpic = (action$: any) => {
     return action$.pipe(
         ofType(SEND_USER_DATA),
         //todo types  
-        mergeMap((action: SendDataAction) => from(send_user_data_fake(action.payload)).pipe(
+        mergeMap((action: SendDataAction) => from(send_user_data(action.payload)).pipe(
             map((response: unknown) => SendDataSuccess(action.payload)),
             catchError((err: Registration.Errors) => {
                 if (err.detail === user_is_registered_error) {

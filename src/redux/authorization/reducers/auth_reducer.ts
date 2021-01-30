@@ -1,4 +1,4 @@
-import { act } from 'react-test-renderer';
+import { Init, INIT, Rehydrate, LOGOUT, LogoutAction } from './../actions/auth_action_types';
 import { status } from '../../constants/constants';
 import {
     AUTH_SUCCESS,
@@ -11,6 +11,7 @@ import {
     AUTH_START
 } from '../actions/auth_action_types';
 import { SEND_USER_SUCCESS } from '../../registration/actions/register_types';
+import { PERSIST, REHYDRATE } from 'redux-persist';
 /*
 res type "data" : {
  "username": "string",
@@ -35,11 +36,19 @@ const initialState: initialType = {
     errors: ""
 }
 
-
 const auth_reducer = (
     state: initialType = initialState,
-    action: AuthAction | AuthErrorAction | AuthSuccessAction | AuthCancelAction): initialType => {
+    action: AuthAction | AuthErrorAction | AuthSuccessAction | AuthCancelAction | Init | LogoutAction): initialType => {
     switch (action.type) {
+        case LOGOUT:
+            return {
+                ...initialState
+            }
+        case INIT:
+            return {
+                ...state,
+                status: status.idle
+            }
         case AUTH_START || SEND_USER_SUCCESS:
             return {
                 ...initialState,
@@ -50,7 +59,7 @@ const auth_reducer = (
             console.log(action.payload)
             return {
                 ...initialState,
-                status: status.success,
+                status: status.idle,
                 username: action.payload.username,
                 access_token: action.payload.access_token,
                 token_type: action.payload.token_type,
