@@ -1,12 +1,12 @@
 import {
     SEND_USER_CANCEL, 
     SEND_USER_ERROR_USER_IS
-} from './../../actions/register/register_types';
+} from '../actions/register_types';
 import {
     SEND_USER_DATA_PENDING,
     SEND_USER_ERROR,
     SEND_USER_SUCCESS
-} from "../../actions/register/register_types"
+} from "../actions/register_types"
 
 //todo types for this
 const initialState = {

@@ -1,4 +1,5 @@
 export namespace Registration {
+    
     export type responseType = {
         username: string
         id: string

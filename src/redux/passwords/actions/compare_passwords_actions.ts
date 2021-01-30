@@ -1,4 +1,4 @@
-import { user_input_type, user_type } from './../register/register_types';
+import { user_input_type, user_type } from '../../registration/actions/register_types';
 import { 
     CHECK_PASSWORDS, 
     CHECK_PASSWORDS_SUCCESS, 

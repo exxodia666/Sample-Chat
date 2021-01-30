@@ -1,4 +1,4 @@
-import { user_input_type, user_type } from "../redux/actions/register/register_types";
+import { user_input_type, user_type } from "../redux/registration/actions/register_types";
 /**
  * takes object { user_name: string; passwords: string[ ] } and returns an array of indexes of empty fields or false
  * @param data 

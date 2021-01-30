@@ -1,12 +1,12 @@
-import { SendData } from './../../actions/register/register_actions';
-import { check_empty_fields } from './../../../utils/check_empty_fields';
-import { CheckPasswordsAction } from './../../actions/compare_passwords/compare_passwords_type';
+import { SendData } from '../../registration/actions/register_actions';
+import { check_empty_fields } from '../../../utils/check_empty_fields';
+import { CheckPasswordsAction } from '../actions/compare_passwords_type';
 import { ofType } from "redux-observable";
 import { of } from "rxjs";
 import { switchMap } from "rxjs/operators";
-import { CHECK_PASSWORDS } from "../../actions/compare_passwords/compare_passwords_type";
+import { CHECK_PASSWORDS } from "../actions/compare_passwords_type";
 import { check_passwords } from '../../../utils/check_passwords';
-import { CheckPasswordsError, EmptyFieldsError } from '../../actions/compare_passwords/compare_passwords_actions';
+import { CheckPasswordsError, EmptyFieldsError } from '../actions/compare_passwords_actions';
 
 const checkPasswordEpic = (action$: any) => {
     return action$.pipe(

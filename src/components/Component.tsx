@@ -1,22 +1,25 @@
 import React from 'react'
 import { View, Text, StyleSheet, TextInput, Dimensions, Button, ActivityIndicator } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import { SendDataCancel } from '../redux/actions/register/register_actions'
+import { SendDataCancel } from '../redux/registration/actions/register_actions'
 import { StoreType } from '../redux/Store'
 import Card from './template/Card'
 import TextComponent from './template/TextComponent'
-import { CheckPasswords } from '../redux/actions/compare_passwords/compare_passwords_actions'
+import { CheckPasswords } from '../redux/passwords/actions/compare_passwords_actions'
+import { status } from '../redux/constants/constants'
 
 const Component: React.FC = (): JSX.Element => {
 
     const dispatch = useDispatch()
     const state = useSelector((state: StoreType) => state.register)
     const data = useSelector((state: StoreType) => state.passwords)
+    const auth = useSelector((state: StoreType) => state.auth)
 
     const [user_name, setname] = React.useState<string>('')
     const [password, setpassword] = React.useState<string>('')
     const [confirmation, setconfirmation] = React.useState<string>('')
 
+    console.log(auth)
 
     const handleOnPress = () => {
         dispatch(CheckPasswords({
@@ -33,8 +36,8 @@ const Component: React.FC = (): JSX.Element => {
         setpassword(data.user.password)
         setconfirmation(data.user.confirmation)
     }, [data.user.password, data.user.password, data.user.confirmation])
-    
-    if (state.status === 'pending') {
+
+    if (state.status === 'pending' || auth.status === status.pending) {
         return <View style={{ flex: 1, justifyContent: 'center', alignItems: "center" }}>
             <Button
                 title='Cancel'

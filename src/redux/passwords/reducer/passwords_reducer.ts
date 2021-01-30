@@ -1,11 +1,12 @@
-import { SendDataActionSuccess, SEND_USER_CANCEL, SEND_USER_DATA } from './../../actions/register/register_types';
-import { CheckPasswordsAction, CheckPasswordsActionError, CheckPasswordsActionSuccess, EMPTY_FIELDS_ERROR, EmptyFieldsError } from './../../actions/compare_passwords/compare_passwords_type';
-import { CHECK_PASSWORDS_ERROR, CHECK_PASSWORDS_SUCCESS } from "../../actions/compare_passwords/compare_passwords_type"
-import { SEND_USER_SUCCESS, user_type } from "../../actions/register/register_types"
+import { user_input_type } from './../../actions/register/register_types';
+import { SendDataActionSuccess, SEND_USER_CANCEL, SEND_USER_DATA } from '../../registration/actions/register_types';
+import { CheckPasswordsAction, CheckPasswordsActionError, CheckPasswordsActionSuccess, EMPTY_FIELDS_ERROR, EmptyFieldsError } from '../actions/compare_passwords_type';
+import { CHECK_PASSWORDS_ERROR, CHECK_PASSWORDS_SUCCESS } from "../actions/compare_passwords_type"
+import { SEND_USER_SUCCESS, user_type } from "../../registration/actions/register_types"
 
 //todo types for this
 type initialType = {
-    user: user_type
+    user: user_input_type
     error: string
 }
 
