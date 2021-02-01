@@ -1,15 +1,14 @@
 import React from 'react'
 import { View, Text, Button, StyleSheet } from 'react-native'
 import { FlatList } from 'react-native'
-import Message from '../../components/Dialog/Message'
+import Dialog from '../../components/Dialog/Dialog'
 const DialogListScreen = ({ }) => {
     console.log("DIALOG")
-
     const data = [{
         image: 'https://www.metalgearinformer.com/wp-content/uploads/2020/07/First-4-Figures-Solid-Snake-Bust-First-Look-scaled.jpg',
         name: 'Solid Snake',
         last_message: 'Ti cho dolbaeb?',
-        message_count: 12,
+        message_count: 1002,
         last_message_time: '22-30'
     }, {
         image: 'data:image/jpeg;base64,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',
@@ -45,19 +44,32 @@ const DialogListScreen = ({ }) => {
     }, {
         image: 'https://cdn.discordapp.com/attachments/709748357572198421/795338421500379136/Screenshot_20210103-022341_Instagram.jpg',
         name: 'Maxim Kochvarda',
-        last_message: '',
+        last_message: 'dasdasdas',
         message_count: 2,
-        last_message_time: ''
+        last_message_time: '11-11'
     }, {
         image: 'https://cdn.discordapp.com/attachments/709748357572198421/795338421500379136/Screenshot_20210103-022341_Instagram.jpg',
         name: 'Maxim Cockchvarda',
-        last_message: '',
+        last_message: 'Delau kunik',
         message_count: 10,
-        last_message_time: ''
+        last_message_time: '23-31'
+    }, {
+        image: 'https://cdn.discordapp.com/attachments/709748357572198421/795338421500379136/Screenshot_20210103-022341_Instagram.jpg',
+        name: 'Maxim Cockchvarda',
+        last_message: 'Ebal v p1sku',
+        message_count: 1,
+        last_message_time: '12-30'
+    }, {
+        image: 'https://cdn.discordapp.com/attachments/709748357572198421/795338421500379136/Screenshot_20210103-022341_Instagram.jpg',
+        name: 'Maxim Cockchvarda',
+        last_message: '2fsafasfasfasfasfasfasf',
+        message_count: 100,
+        last_message_time: '12-30'
     }]
     return (
         <FlatList
-            renderItem={({ item }) => <Message
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({ item }) => <Dialog
                 image={item.image}
                 name={item.name}
                 last_message={item.last_message}

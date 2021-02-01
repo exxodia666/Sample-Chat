@@ -3,22 +3,27 @@ import { createDrawerNavigator, DrawerContentComponentProps } from '@react-navig
 import CustomDrawer from './CustomDrawer/CustomDrawer';
 import Component2 from '../../components/Component2';
 import MainStack from '../MainStack/MainStack';
+import ContactsStack from '../ContactsStack/ContactsStack';
+import SettingsStack from '../SettingsStack/SettingsStack';
 
 const MainDrawer = () => {
     const Drawer = createDrawerNavigator();
     return (
         <Drawer.Navigator
-            
             initialRouteName="Home"
             drawerContent={(props: DrawerContentComponentProps) => <CustomDrawer {...props} />}
         >
             <Drawer.Screen
-                name="Home"
+                name="Dialogs"
                 component={MainStack}
             />
             <Drawer.Screen
-                name="Notifications"
-                component={Component2}
+                name="Contacts"
+                component={ContactsStack}
+            />
+            <Drawer.Screen
+                name="Settings"
+                component={SettingsStack}
             />
         </Drawer.Navigator>
     )

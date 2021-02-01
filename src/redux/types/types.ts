@@ -20,9 +20,9 @@
 
 
 export type user_input_type = {
-  user_name: string,
+  username: string,
   password: string,
-  confirmation: string
+  confirmation?: string
 }
 export type user_type = {
   username: string,

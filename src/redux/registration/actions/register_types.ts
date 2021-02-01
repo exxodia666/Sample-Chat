@@ -1,3 +1,4 @@
+import { user_input_type, user_type } from "../../types/types"
 import { Registration } from "../epic/register_types"
 
 export const SEND_USER_DATA = 'USER/SEND_USER_DATA'

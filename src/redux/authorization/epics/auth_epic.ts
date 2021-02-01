@@ -38,10 +38,11 @@ const auth_user_fake = (data: user_type) => {
     console.log(fd)
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            //reject( { detail: 'Wrong password!' })
+            //reject({ detail: 'Wrong password!' })
+            //reject({ detail: 'You are not registered!' })
             resolve({
                 data: {
-                    access_token: "Spike",
+                    access_token: "dsf3224$pidasdasfsake",
                     token_type: "bearer"
                 }
             });
@@ -56,7 +57,6 @@ const fetchUserEpic = (action$: any, state$: any) => {
         ofType(AUTH_START, SEND_USER_SUCCESS),
         mergeMap((action: AuthAction) =>
             from(auth_user_fake({ username: action.payload.username, password: action.payload.password })).pipe(
-                //console.log(response)
                 map((response: unknown) => AuthUserSuccess({ ...response.data, username: action.payload.username })),
                 catchError(error => {
                     console.log(error)

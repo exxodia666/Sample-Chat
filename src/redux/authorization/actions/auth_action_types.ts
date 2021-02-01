@@ -1,15 +1,15 @@
 import { user_type } from './../../types/types';
 import { Authorization } from '../epics/auth_types';
 import { REHYDRATE } from 'redux-persist';
-export const AUTH_START   = 'USER/AUTH'
+export const AUTH_START = 'USER/AUTH'
 export const AUTH_SUCCESS = 'USER/AUTH_SUCCESS'
-export const AUTH_ERROR   = 'USER/AUTH_SUCCESS_ERROR'
+export const AUTH_ERROR = 'USER/AUTH_SUCCESS_ERROR'
 
-export const AUTH_CANCEL  = 'USER/AUTH_CANCEL'
+export const AUTH_CANCEL = 'USER/AUTH_CANCEL'
 
-export const LOGOUT   = 'USER/LOGOUT'
+export const LOGOUT = 'USER/LOGOUT'
 
-export const INIT         = 'USER/INIT'
+export const INIT = 'USER/INIT'
 
 export interface Init {
   type: typeof INIT

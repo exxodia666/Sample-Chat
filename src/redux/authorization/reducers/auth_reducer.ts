@@ -55,8 +55,6 @@ const auth_reducer = (
                 status: status.pending
             }
         case AUTH_SUCCESS:
-            console.log("action.payload")
-            console.log(action.payload)
             return {
                 ...initialState,
                 status: status.idle,

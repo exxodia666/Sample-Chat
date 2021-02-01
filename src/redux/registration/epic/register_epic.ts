@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Registration } from './register_types';
-import { SEND_USER_CANCEL, user_type, SendDataAction } from '../actions/register_types';
+import { SEND_USER_CANCEL, SendDataAction } from '../actions/register_types';
 import {
     SendDataError,
     SendDataSuccess,
@@ -12,6 +12,7 @@ import { catchError, map, mergeMap, startWith, takeUntil } from "rxjs/operators"
 import { SEND_USER_DATA } from "../actions/register_types";
 import { of, from, } from 'rxjs';
 import { user_is_registered_error } from './constants';
+import { user_type } from '../../types/types';
 /**
  *  @param data 
  *  Todo fake fetch func for registration 
@@ -20,15 +21,12 @@ import { user_is_registered_error } from './constants';
  *  password: string;
  *  }
  */
-const send_user_data_fake = (data: user_type): Promise<any> => {
-    //send_user_data({username: 'Lopux', password: "12345"})
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve({ kekwas: 'kwk' });
-            //reject({ detail: user_is_registered_error })
-        }, 3000)
-    });
-}//todo
+const send_user_data_fake = (data: user_type): Promise<any> => new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve({});
+        //reject({ detail: user_is_registered_error })
+    }, 3000)
+});
 /**
  * @param data 
  * Send data in format {
@@ -47,7 +45,7 @@ const registrationEpic = (action$: any) => {
     return action$.pipe(
         ofType(SEND_USER_DATA),
         //todo types  
-        mergeMap((action: SendDataAction) => from(send_user_data(action.payload)).pipe(
+        mergeMap((action: SendDataAction) => from(send_user_data_fake(action.payload)).pipe(
             map((response: unknown) => SendDataSuccess(action.payload)),
             catchError((err: Registration.Errors) => {
                 if (err.detail === user_is_registered_error) {

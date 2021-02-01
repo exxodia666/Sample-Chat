@@ -1,8 +1,19 @@
-import { user_input_type } from './../../actions/register/register_types';
-import { SendDataActionSuccess, SEND_USER_CANCEL, SEND_USER_DATA } from '../../registration/actions/register_types';
-import { CheckPasswordsAction, CheckPasswordsActionError, CheckPasswordsActionSuccess, EMPTY_FIELDS_ERROR, EmptyFieldsError } from '../actions/compare_passwords_type';
-import { CHECK_PASSWORDS_ERROR, CHECK_PASSWORDS_SUCCESS } from "../actions/compare_passwords_type"
-import { SEND_USER_SUCCESS, user_type } from "../../registration/actions/register_types"
+import { SendDataAction, SendDataActionCancel } from './../../registration/actions/register_types';
+import {
+    SendDataActionSuccess,
+    SEND_USER_CANCEL,
+    SEND_USER_DATA
+} from '../../registration/actions/register_types';
+import {
+    CheckPasswordsAction,
+    CheckPasswordsActionError,
+    CheckPasswordsActionSuccess,
+    EmptyFieldsActionError,
+    EMPTY_FIELDS_ERROR
+} from '../actions/compare_passwords_type';
+import { CHECK_PASSWORDS_ERROR } from "../actions/compare_passwords_type"
+import { SEND_USER_SUCCESS } from "../../registration/actions/register_types"
+import { user_input_type } from '../../types/types';
 
 //todo types for this
 type initialType = {
@@ -19,7 +30,7 @@ const initialState: initialType = {
     error: '',
 }
 const passwords_reducer = (state: initialType = initialState,
-    action: CheckPasswordsAction | CheckPasswordsActionError | CheckPasswordsActionSuccess | SendDataActionSuccess | EmptyFieldsError): initialType => {
+    action: CheckPasswordsAction | CheckPasswordsActionError | CheckPasswordsActionSuccess | SendDataActionSuccess | EmptyFieldsActionError | SendDataAction | SendDataActionCancel): initialType => {
     console.log(`ACTION: ${action.type}`)
     switch (action.type) {
         case SEND_USER_DATA:
@@ -47,7 +58,6 @@ const passwords_reducer = (state: initialType = initialState,
                 ...initialState
             }
         case SEND_USER_CANCEL:
-            console.log(state)
             return {
                 ...state,
             }
