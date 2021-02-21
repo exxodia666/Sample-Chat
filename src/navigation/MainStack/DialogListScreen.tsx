@@ -2,6 +2,7 @@ import React from 'react'
 import { View, Text, Button, StyleSheet } from 'react-native'
 import { FlatList } from 'react-native'
 import Dialog from '../../components/Dialog/Dialog'
+
 const DialogListScreen = ({ }) => {
     console.log("DIALOG")
     const data = [{
@@ -66,6 +67,34 @@ const DialogListScreen = ({ }) => {
         message_count: 100,
         last_message_time: '12-30'
     }]
+
+    const socket = new WebSocket(
+        'ws://134.249.181.40:7777/chats/',
+        null,
+        {
+            headers: {
+                Authorization: 'Bearer token'
+            }
+        })
+
+
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtdXhlbSIsImV4cCI6MTYxMjI5MjAzMn0.MxX8Sj1VVh7dA5APNoi - v9INhgSooO01zpyRipG4tfQ'
+
+    //socket.connect();
+
+
+
+    const send = () => {
+        socket.send('Kunik wsemy golova!')
+    }
+    React.useEffect(() => {
+        console.log('start')
+        socket.onopen = () => {
+            console.log('opens')
+            socket.send('Otkril hlebalo')
+        };
+    }, [])
+
     return (
         <FlatList
             keyExtractor={(item, index) => index.toString()}
